@@ -1,0 +1,4 @@
+firstName: Дмитрий
+lastName: Корошев
+fatherName: Григорьевич
+yearOfBirth: 2003
