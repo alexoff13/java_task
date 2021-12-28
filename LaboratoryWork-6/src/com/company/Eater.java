@@ -1,35 +1,35 @@
 package com.company;
 
 
-public class Philosopher implements Runnable {
+public class Eater implements Runnable {
     private int eaten = 0;
     private boolean successful = true;
 
     @Override
     public void run() {
         while (successful) {
-            if (getRandomBoolean()) {
+            if (randomBool()) {
                 successful = eat();
                 ++eaten;
-                System.out.println(Thread.currentThread().getName() + " съел в сумме: " + eaten);
+                System.out.println(Thread.currentThread().getName() + " съел: " + eaten);
             } else {
                 successful = reflect();
             }
         }
-        System.out.println(Thread.currentThread().getName() + " ушёл...");
+        System.out.println(Thread.currentThread().getName() + "ушел");
     }
 
     public static synchronized boolean eat() {
-        System.out.println(Thread.currentThread().getName() + " ест, теперь тарелка с рисом занята");
+        System.out.println(Thread.currentThread().getName() + " ест");
         boolean successful = sleep();
-        System.out.println(Thread.currentThread().getName() + " освободил тарелку с рисом");
+        System.out.println(Thread.currentThread().getName() + "перестал есть");
         return successful;
     }
 
     public static boolean reflect() {
-        System.out.println(Thread.currentThread().getName() + " размышляет");
+        System.out.println(Thread.currentThread().getName() + " ожидает");
         boolean successful = sleep();
-        System.out.println(Thread.currentThread().getName() + " перестал размышлять");
+        System.out.println(Thread.currentThread().getName() + " перестал ожидать");
         return successful;
     }
 
@@ -40,17 +40,17 @@ public class Philosopher implements Runnable {
      */
     public static boolean sleep() {
         try {
-            Thread.sleep(getRandomSleepTime());
+            Thread.sleep(randomSleep());
             return true;
         } catch (InterruptedException ignored) {}
         return false;
     }
 
-    public static boolean getRandomBoolean() {
+    public static boolean randomBool() {
         return Math.random() < 0.5;
     }
 
-    public static int getRandomSleepTime() {
+    public static int randomSleep() {
         return (int)(Math.random() * 3000) + 500;
     }
 }

@@ -16,10 +16,10 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        new Thread(new Philosopher(), "Давид").start();
-        new Thread(new Philosopher(), "Джек").start();
-        new Thread(new Philosopher(), "Роберт").start();
-        new Thread(new Philosopher(), "Бен").start();
-        new Thread(new Philosopher(), "Майкл").start();
+        new Thread(new Eater(), "А").start();
+        new Thread(new Eater(), "Б").start();
+        new Thread(new Eater(), "В").start();
+        new Thread(new Eater(), "Г").start();
+        new Thread(new Eater(), "Д").start();
     }
 }

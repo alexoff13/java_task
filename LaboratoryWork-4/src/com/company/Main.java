@@ -1,48 +1,29 @@
 package com.company;
 
-/**
- Разработать класс-дженерик для хранения данных.
-
- Данные должны храниться в поле-массиве, ограниченном максимальным размером (например, 10 элементов). Реализовать методы
- добавления данных и удаления данных (например, по принципу стека). Методы должны генерировать исключение при попытке
- добавить данное в уже заполненный контейнер и удалить из пустого контейнера. Для этого создать свои классы исключений.
- Кроме этого реализовать метод поиска элементов. Метод генерирует исключение, если контейнер содержит больше одного
- искомого элемента.
- */
-
 public class Main {
     public static void main(String[] args) throws StackException {
-        // Constructor testing
+        // Конструктор
         try {
             Stack<String> stack = new Stack<>(-1);
         } catch (StackException e) {
-            System.out.println(e.getMessage() + ": calling a constructor with negative size");
+            System.out.println(e.getMessage() + ": Вызов конструктора с размером < 0");
         }
         try {
             Stack<Integer> stack = new Stack<>(0);
         } catch (StackException e) {
-            System.out.println(e.getMessage() + ": calling a constructor with zero size");
+            System.out.println(e.getMessage() + ": Вызов конструктора с размером = 0");
         }
 
-        int size = 10;
+        int size = 13;
         Stack<String> stack = new Stack<>(size);
 
         // Pop testing
         try {
             stack.pop();
         } catch (StackException e) {
-            System.out.println(e.getMessage() + ": calling a pop method on an empty stack");
+            System.out.println(e.getMessage() + ": pop | пустой стек");
         }
-        try {
-            for (int i = 0; i < size; ++i) {
-                stack.push(Integer.toString(i));
-            }
-            for (int i = 0; i < size + 1; ++i) {
-                stack.pop();
-            }
-        } catch (StackException e) {
-            System.out.println(e.getMessage() + ": calling too many pop methods");
-        }
+
 
         // Push testing
         try {
@@ -50,7 +31,7 @@ public class Main {
                 stack.push(Integer.toString(i * i));
             }
         } catch (StackException e) {
-            System.out.println(e.getMessage() + ": calling too many push methods");
+            System.out.println(e.getMessage() + ": переполненине");
         }
 
         // Find testing
