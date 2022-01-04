@@ -1,13 +1,14 @@
 package org.alexoff.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "genre", schema = "films")
 public class Genre {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @Column(name = "name")
@@ -17,6 +18,7 @@ public class Genre {
     private List<Film> Films;
 
     public Genre() {
+        this.Films = new ArrayList<Film>();
     }
 
     public Integer getId() {
@@ -49,5 +51,9 @@ public class Genre {
 
     public void setFilms(List<Film> films) {
         Films = films;
+    }
+
+    public void addFilm(Film film) {
+        this.Films.add(film);
     }
 }

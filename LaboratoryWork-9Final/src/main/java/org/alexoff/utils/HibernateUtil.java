@@ -7,13 +7,14 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
     private static final SessionFactory sessionFactory;
+
     static {
         try {
             Configuration configuration = new Configuration();
             configuration.configure();
 
             sessionFactory = configuration.buildSessionFactory();
-        } catch (Throwable ex){
+        } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
         }
     }
